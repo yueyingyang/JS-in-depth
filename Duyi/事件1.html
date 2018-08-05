@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件from duyi</title>
+</head>
+<body>
+
+	<div style="width:100px;height:100px;background-color:red;position:absolute;top:100px;left:100px"></div>	
+
+	<mark>preserve</mark>
+	<pre>2333dd<sss></pre>
+		<dl><dt>牛客网</dt><dd>网址为www.nowcoder.com</dd><dd>牛客网是一个专注于程序员的学习和成长的专业平台。</dd></dl>
+
+	<!-- blur 和 focus 事件 -->
+	<!-- 	<input type="text" value="请输入用户名" style="color: #999" onfocus="if(this.value == '请输入用户名'){this.value='';this.style.color='#424242'}" onblur="if(this.value == ''){this.value ='请输入用户名';this.style.color='#999'}"> -->
+
+	<!-- 用行间js解除默认事件 -->
+	<!-- <a href="javascript:void(false)">www.baidu.com</a>
+ -->
+
+ <!-- 	<iframe id="pageEditor" src="/index.html" style="width:500px;height:150px"></iframe>
+ 	<button onclick="alert(event.type)"></button>
+ 	<input type="image"> -->
+ 	<input type="text" value="请输入用户名">
+
+	<script type="text/javascript">
+
+		// window.document.designMode="on";
+  //       editor.contentWindow.document.designMode = "on";
+
+  		var input = document.getElementsByTagName('input')[0];
+  		input.oninput = function(){
+  			console.log(this.value);
+  		}
+
+
+
+		// var answer = document.getElementsByClassName('file')[1];
+
+		// var div = document.getElementsByTagName('div')[0];
+		// disX = parseInt(div.style.left);
+		// disY = parseInt(div.style.top);
+		// window.onscroll = function(e){
+		// 	div.style.top = 100 + window.pageYOffset + 'px';
+		// 	div.style.left = 100 + window.pageXOffset + 'px';
+		
+		// }
+
+
+		// 键盘事件
+		// document.onkeydown = function(e){
+		// 	console.log(e.which);
+		// }
+		// document.onkeypress = function(e){
+		// 	console.log(String.fromCharCode(e.charCode));
+		// }
+
+		// 拖拽
+		// var div = document.getElementsByTagName('div')[0];
+		// div.onmousedown = function(e){
+		// 	var disX, disY;
+		// 	disX = e.pageX - parseInt(div.style.left);
+		// 	disY = e.pageY - parseInt(div.style.top);
+		// 	document.onmousemove = function(e){
+		// 	var event = e || window.event;
+		// 	div.style.left = event.pageX - disX + "px";
+		// 	div.style.top = event.pageY - disY + "px";
+		// 	}
+		// 	document.onmouseup = function(){
+		// 		document.onmousemove = null;
+		// 	}
+		// }
+
+
+		//事件委托
+		// var ul = document.getElementsByTagName('ul')[0];
+		// ul.addEventListener('click',function(e){
+		// 	var event = e || window.event;
+		// 	var target = event.target || event.srcElement;
+		// 	console.log(target.innerText);
+		// })
+
+
+		//阻止a标签
+		// var a = document.getElementsByTagName('a');
+		// a[0].onclick = function(){
+		// 	return false;
+		// }
+
+		
+		//阻止默认事件
+		// document.addEventListener('contextmenu',function(e){
+		// 	// e.returnValue = false;
+		// 	console.log('1');
+		// 	e.preventDefault();
+
+		// })
+
+		// 取消冒泡
+		// document.addEventListener("click",function(){
+		// 	console.log("你搞啥呢？？");
+		// })
+		// var ul = document.getElementsByTagName("ul");
+		// ul[0].addEventListener("click",function(e){
+		// 	// e.stopPropagation();
+		// 	// e.cancelBubble = true;
+		// },false)
+
+
+		// 当要输出关于i的东西时，必须是立即执行函数
+		// var li = document.getElementsByTagName("li");
+		// for(let i = 0; i < li.length; i++){
+		// 	(function(i){
+		// 		li[i].addEventListener("click",function(){
+		// 						console.log(i);
+		// 					})
+
+		// 	}(i))
+		// }
+
+
+		// 兼容性的事件绑定函数 
+		// function addEvent(elem, type, handle){
+		// 	if(elem.addEventListener){
+		// 		elem.addEventListener(type, handle, false);
+		// 	}else if(elem.attachEvent){
+		// 		elem.attachEvent('on' + type, function(){
+		// 			handle.call(elem);
+		// 		})
+		// 	}else{
+		// 		elem['on' + type] = handle;
+		// 	}
+		// }
+
+
+
+
+
+	</script>
+</body>
+</html>

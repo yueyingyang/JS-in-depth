@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>未来的函数：生成器和promise</title>
+</head>
+<body>
+
+	<div id="subTree">
+		<form>
+			<input type="text"/>
+		</form>
+		<p></p>
+		<span></span>
+	</div>
+
+
+	<script type="text/javascript">
+
+		// 使用while循环迭代生成器结果
+
+		// function* dreamCompany(){
+		// 	yield "alibaba";
+		// 	yield* encouragement();
+		// 	yield "Tencent";
+
+		// }
+
+		// function* encouragement(){
+		// 	yield "perserve";
+		// 	yield "hard-working";
+		// }
+
+		// var getMyOffer = dreamCompany();
+		// let item;
+		// while(!(item = getMyOffer.next()).done){
+
+		// 	console.log(item.value);
+
+		// }
+
+
+		// for-of是迭代器的语法糖
+
+		// for(var item of dreamCompany()){
+		// 	console.log(item);
+		// }
+
+
+		// 给每个对象生成id
+
+		// function* IdGenerator(){
+		// 	let id = 0;
+		// 	while(true){
+		// 		yield ++id;
+		// 	}
+		// }
+
+		// var idIterator = IdGenerator();
+
+		// const ninja1 = { id: idIterator.next().value };
+		// const ninja2 = { id: idIterator.next().value };
+		// const ninja3 = { id: idIterator.next().value };
+
+		// console.log(ninja1.id);
+		// console.log(ninja2.id);
+		// console.log(ninja3.id);
+
+
+		// 递归遍历dom
+		// 深度优先？？
+
+		// function traverseDOM(element, callback){
+		// 	callback(element);
+		// 	element = element.firstElementChild;
+		// 	while(element){
+		// 		traverseDOM(element,callback);
+		// 		element = element.nextElementSibling;
+		// 	}
+		// }
+
+
+		// const subTree = document.getElementById("subTree");
+		// traverseDOM(subTree, (element) => {
+		// 	console.log(element);
+		// })
+
+		// 用生成器遍历dom树
+		// function* DomTraversal(element){
+		// 	yield element;
+		// 	element = element.firstElementChild;
+		// 	while(element){
+		// 		yield* DomTraversal(element);
+		// 		element = element.nextElementSibling;
+		// 	}
+		// }
+
+		// const subTree = document.getElementById("subTree");
+		// for(let element of DomTraversal(subTree)){
+		// 	console.log(element.nodeName);
+		// }
+
+
+		// function* NinjaGenerator(action){
+		// 	const imposter = yield("1" + action);
+		// 	yield ("2" + imposter + action);
+		// }
+
+		// const ninjaIterator = NinjaGenerator("第一次调用传参");
+		// console.log(ninjaIterator.next().value);
+		// console.log(ninjaIterator.next('第二次在next里传参').value);
+		     
+		// function getJson(url){
+		// 	return new Promise((resolve, reject) => {
+		// 		const request = new XMLHttpRequest();
+
+		// 		request.open('GET', url);
+
+		// 		request.onload = function(){
+		// 			try{
+		// 				if(this.status === 200){
+		// 					resolve(JSON.parse(this.response));
+		// 				}else {
+		// 					reject(this.status, " " + this.statusText);
+		// 				}
+		// 			}catch(e){
+		// 				reject(e.message);
+		// 			}
+		// 		}
+		// 		request.onerror = function(){
+		// 		reject(this.status + "" + this.statusText);
+		// 		}
+		// 		request.send();
+		// 	})
+		// }
+		// var url = "https://www.easy-mock.com/mock/5b5da5fc031c6933a3665035/example/mock1"
+		// getJson(url).then(ninja => { 
+		// 	console.log("success");
+		// 	console.log(ninja)
+		// }).catch(e => { console.log(e + "哎呦出错啦"); })
+
+		// 处理多个并行的promise
+		// Promise.all([getJson(url1),
+		// 			getJson(url2),
+		// 			getJson(url3)]).then(results => {
+		// 				const ninjas = results[0],
+		// 					mapInfo = results[1],
+		// 					plan = results[2]
+		// 			})
+					// 当三个都resolve了之后执行then里的回调
+
+		// 只关心第一个成功或失败的promise
+		// Promise.race([]).then(ninja => {})
+
+		// 将promise和生成器结合
+		async(function* (){
+			try {
+				const ninjas = yield getJson('data/ninjas.json');
+				const missions = yield getJson(ninjas[0].missionsUrl);
+				const missionDescription = yield getJson(missions[0],detailsUrl);
+
+			}catch(e){
+				//处理错误
+			}
+		})
+
+		function async(generator){
+			var iterator = generator();
+
+			function handle(iteratorResult){
+				if(iterator.done){
+					const iteratorValue = iteratorResult.value;
+
+					if(iteratorValue instanceof Promise){
+						iteratorValue.then(res => handle(iterator.next(res)))
+									.catch(err => iterator.throw(err));
+					}
+				}
+			}
+
+			try {
+				handle(iterator.next());
+			}catch(e){
+				iterator.throw(e);
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

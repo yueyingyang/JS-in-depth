@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制对象访问</title>
+</head>
+<body>
+	<!-- 利用set方法进行输入值校验 -->
+
+	<script type="text/javascript">
+
+
+		// 代理对象帮助分离 记录日志 和 读写语句
+		function makeLoggable(target){
+			return new Proxy(target, {
+				get: (target, property) => {
+					console.log("Get " + property);
+					return target[property];
+				},
+				set: (target, property, value) => {
+					console.log("Set " + property + " as " + value);
+					target[property] = value;
+				}
+			})
+		}
+
+		let ninja = {
+			name: "Sophia"
+		};
+		ninja = makeLoggable(ninja);
+		console.log(ninja.name);
+		ninja.name = 'sword';
+
+
+		// 通过Object.defineProperty定义一个外部接口，来访问私有化变量
+		// function Ninja(){
+		// 	var _age = 0;
+		// 	Object.defineProperty(this, 'age',{
+		// 		get: () => {
+
+		// 			console.log('调用了getter方法！');
+		// 			return _age;
+
+		// 		},
+		// 		set: value => {
+		// 			if(!Number.isInteger(value)){
+		// 				throw new TypeError("Age should be a number!");
+		// 			}
+		// 			_age = value;
+		// 		}
+		// 	})
+		// }
+
+		// const ninja = new Ninja();
+		// ninja.age = 10;
+		// console.log('ninja.age = ' + ninja.age);
+		// console.log('ninja._age = ' + ninja._age);
+
+		// try{
+		// 	ninja.age = "hhh"
+		// }catch(e){
+		// 	console.log(e);
+		// }
+	</script>
+	
+</body>
+</html>

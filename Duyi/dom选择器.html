@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom选择器</title>
+</head>
+<body>
+
+	<div>
+		<span></span>
+		<strong></strong>
+		<em></em>
+	</div>
+
+	<script type="text/javascript">
+		var strong = document.getElementsByTagName('strong')[0];
+
+		function retElement(node){
+			var arr = [];
+			var nodes = node.childNodes;
+			var length = nodes.length;
+			for(let i = 0; i < length;i++){
+				if (nodes[i].nodeType == 1){
+					arr.push(nodes[i]);
+				}
+			}
+			return arr
+		}
+
+	</script>
+	
+</body>
+</html>

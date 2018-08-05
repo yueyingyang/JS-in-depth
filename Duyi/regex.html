@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		// 将-转换成小驼峰
+		// var reg = /-(\w)/g;
+		// var str = "the-first-name";
+		// console.log(str.replace(reg,($, $1) => $1.toUpperCase()));
+
+
+		// var reg = /\\/;
+		// var str = "123\\2";
+		// console.log(str.match(reg));
+
+		// 字符串去重
+		// var reg = /(\w)\1+/g;
+		// var str = "aaabb";
+		// console.log(str.match(reg));
+		// console.log(str.replace(reg,"$1"));
+
+
+		// 匹配空格，该空格后面有三的倍数个数字，且空格后面的字符不是border
+		// var str = "10000000000";
+		// var reg = /(?=(\B)(\d{3})+$)/g;
+		// console.log(str.replace(reg,'.'));
+
+		// var reg = /[hello]/g;
+		// var str = "hello";
+		// reg.test(str);
+
+		// var reg = /(?:ninja)-(trick)?-\1/;
+		// var str = 'ninja-';
+		// var str1 = 'ninja-trick-ninja';
+		// var str2 = 'ninja-trick-trick'
+
+
+	</script>
+
+</body>
+</html>

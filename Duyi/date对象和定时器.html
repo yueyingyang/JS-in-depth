@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date</title>
+
+</head>
+<body>
+	<div style="position: relative;left: 0;width: 100px;height: 100px;background-color: red"></div>
+	<input type="text" value="0">
+	<input type="text" value="0">
+	<script type="text/javascript">
+		var div = document.getElementsByTagName('div')[0];
+		setInterval(function(){
+			div.style.left = parseInt(div.style.left) + 1 + 'px';
+		},10)
+// 时间戳
+		// var firstTime = new Date().getTime();
+		// for(var i = 0;i < 1000000; i++){
+
+		// }
+		// var lastTime = new Date().getTime();
+		// console.log(lastTime - firstTime);
+
+
+//打印年月日，处理月
+		// var date = new Date();
+		// var time = "" + date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + (date.getDate()) + "日" + date.getHours() + "时" +date.getMinutes() + 
+		// 	"分" + date.getSeconds() + "秒";
+		// 	console.log(time);
+
+//定时器到底准不准
+		// var firstTime = new Date().getTime();
+		// setInterval(function(){
+		// 	var lastTime = new Date().getTime();
+		// 	console.log(lastTime - firstTime);
+		// 	firstTime = lastTime;
+		// },1000)
+
+
+		// var i = 0;
+		// var time1 = setInterval(function(){
+			
+		// 	console.log(i++)
+		// 	if(i > 10){
+		// 		clearInterval(time1);
+		// 	}
+		// },1000);
+
+
+
+//有分有秒的计时器
+		// var minutesNode = document.getElementsByTagName('input')[0];
+		// var secondsNode = document.getElementsByTagName('input')[1];
+		// var minute = 0,
+		// 	second = 0;
+		// var timer = setInterval(function(){
+		// 	second ++;
+		// 	if(second == 60){
+		// 		second = 0;
+		// 		minute ++
+		// 	};
+		// 	if(minute == 3){
+		// 		clearInterval(timer);
+		// 	}
+		// 	minutesNode.value = minute;
+		// 	secondsNode.value = second;
+		// },100)
+
+
+
+
+	</script>
+	
+
+	
+</body>
+</html>

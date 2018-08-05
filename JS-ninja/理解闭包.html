@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>理解闭包</title>
+	<style type="text/css">
+		#box{
+			/*width: 100px;
+			height: 100px;*/
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		
+
+		// 简单闭包
+
+		// var outerValue = "在外面";
+		// var later;
+		// function outerFunction(){
+
+		// 	var innerValue = "在里面";
+		// 	function innerFunction (){
+		// 		console.log(innerValue);
+		// 	}
+		// 	later = innerFunction;
+
+		// }
+
+
+		// 私有化变量
+
+		// function Ninja(){
+		// 	var feints = 0;
+		// 	this.getFeints = function (){
+		// 		return feints;
+		// 	};
+		// 	this.feint = function (){
+		// 		feints++;
+		// 	}
+		// }
+
+		// var ninja = new Ninja();
+
+
+		// 回调函数
+
+		// function animateIt(elemId){
+		// 	var tick = 0;
+		// 	var elem = document.getElementById(elemId);
+		// 	var timer = setInterval(function(){
+
+		// 		if(tick < 100){
+		// 			elem.style.left = elem.style.top = tick + "px";
+		// 			tick ++;
+		// 		}else{
+		// 			clearInterval(timer);
+		// 		}
+		// 	},10);
+		// }
+
+		// call stack
+		function shulk(ninja){
+			report(ninja + "shulk");
+		}
+		function report(message){
+			console.log(message);
+		}
+
+		shulk("Kuma");
+		shulk("Yoshi");
+
+
+
+
+
+	</script>
+
+</body>
+</html>

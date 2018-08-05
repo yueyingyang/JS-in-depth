@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello World</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+       <!--  <div id="app">
+            <div>
+                <input v-model="title">
+                <button v-on:click="add">submit</button>
+            </div>
+            <div>
+                <ul>
+                    <li v-for="item in list">{{item}}</li>
+                </ul>
+            </div>
+        </div> -->
+       
+
+    
+    <script data-main="./main.js" src="https://cdn.bootcss.com/require.js/2.3.5/require.js"></script>  
+   
+    <script>
+        
+
+        // 一个简单的todolist
+        // var vm = new Vue({
+        //     el:'#app',
+        //     data:{
+        //         title:'',
+        //         list: []
+        //     },
+        //     methods:{
+        //         add:function(){
+        //             this.list.push(this.title);
+        //             this.title = '';
+        //         }
+        //     }
+        // })
+
+        //以下是手写的ppt中的render函数
+        // function render(){
+        //     with(this){ //this = vm 
+        //         _c(
+
+        //             'div',{
+        //                 attrs: {'id': 'app'}
+        //             },
+        //             [
+        //                 _c('p', [_v(_s(price))])
+        //             ]
+
+        //         )
+        //     }
+        // }
+
+        // 解释with的用法
+        // var obj = {
+        //     name: 'zhagnsan',
+        //     age: 20,
+        //     getAddress:function(){
+        //         alert("beijing");
+        //     }
+        // }
+
+        // function fn(){
+        //     with(obj){
+        //         console.log(name);
+        //         console.log(age);
+        //         getAddress();
+        //     }
+        // }
+
+        // 数据监听
+        // var obj = {};
+        // var _name = 'shangsan';//内部变量_name
+        // Object.defineProperty(obj, 'name', {
+        //     get:function(){
+        //         console.log('get' + _name);
+        //         return _name;
+        //     },
+        //     set: function(newVal){
+        //         console.log('set' + newVal);
+        //         _name = newVal;
+        //     }
+        // })
+
+
+    </script>
+    
+</body>
+</html>

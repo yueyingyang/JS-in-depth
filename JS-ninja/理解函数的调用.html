@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>理解函数的调用</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+
+		// 得到调用函数时传递的参数
+		
+		function sum(...restP){
+
+			var length = restP.length;
+			var sum = 0
+			for (let i = 0;i < length; i++){
+				sum += restP[i];
+			}
+			return sum;
+
+		}
+
+		//测试this
+
+		function whatsMyContext(){
+			return this;
+		}
+		whatsMyContext();
+		var getThis = whatsMyContext;
+		getThis();
+		var ninjia = {
+			getThis:whatsMyContext
+		}
+		ninjia.getThis();
+
+
+		function forEach(list, callback){
+			var length = list.length;
+			for (let i = 0; i < length; i++){
+				callback.call(list[i],i);
+			}
+		}
+
+		forEach([1,2,3],function(index){
+			console.log(this);
+		})
+
+
+	</script>
+
+</body>
+</html>
